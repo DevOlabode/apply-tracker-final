@@ -22,6 +22,8 @@ ApplyTracker is a comprehensive web application designed to help job seekers tra
 - **Caching**: Intelligent caching for AI analysis results
 - **Error Handling**: Comprehensive error handling and user feedback
 
+## Screenshots
+
 ## 🛠️ Tech Stack
 
 ### Backend
