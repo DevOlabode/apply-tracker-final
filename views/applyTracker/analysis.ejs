@@ -1,0 +1,107 @@
+<% layout('layout/boilerplate.ejs') %>
+<div class="text-light">
+  <!-- Header Section -->
+  <div class="text-center mb-5">
+    <h1 class="analysis-text-gradient fw-bold">
+      <i class="fas fa-chart-line me-3"></i>
+      AI Analysis Report
+    </h1>
+    <p class="text-secondary">AI-powered insights for your job application</p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="row g-4">
+    <!-- AI Score Section -->
+    <div class="col-lg-4">
+      <div class="analysis-glass-card text-center">
+        <div class="card-header">
+          <h4 class="analysis-text-gradient mb-0">
+            <i class="fas fa-star me-2"></i>AI Score
+          </h4>
+        </div>
+        <div class="card-body">
+          <div class="score-circle mx-auto mb-3">
+            <div class="score-value">
+              <%= analysis.score %>%
+            </div>
+          </div>
+          <p class="text-light">
+            <% if (analysis.score >= 80) { %>
+              <span class="text-success"><i class="fas fa-check-circle me-2"></i>Excellent match!</span>
+            <% } else if (analysis.score >= 60) { %>
+              <span class="text-warning"><i class="fas fa-exclamation-triangle me-2"></i>Good match with room for improvement</span>
+            <% } else { %>
+              <span class="text-danger"><i class="fas fa-times-circle me-2"></i>Needs significant improvements</span>
+            <% } %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strengths Section -->
+    <div class="col-lg-8">
+      <div class="analysis-glass-card">
+        <div class="card-header">
+          <h4 class="analysis-text-gradient mb-0">
+            <i class="fas fa-thumbs-up me-2"></i>Strengths
+          </h4>
+        </div>
+        <div class="card-body">
+          <% if (analysis.strengths && analysis.strengths.length > 0) { %>
+            <ul class="list-unstyled">
+              <% analysis.strengths.forEach(strength => { %>
+                <li class="mb-3">
+                  <div class="d-flex align-items-start">
+                    <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                    <span class="text-light"><%= strength %></span>
+                  </div>
+                </li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            <p class="text-secondary">No specific strengths identified.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Improvements Section -->
+    <div class="col-lg-12">
+      <div class="analysis-glass-card">
+        <div class="card-header">
+          <h4 class="analysis-text-gradient mb-0">
+            <i class="fas fa-lightbulb me-2"></i>Areas for Improvement
+          </h4>
+        </div>
+        <div class="card-body">
+          <% if (analysis.improvements && analysis.improvements.length > 0) { %>
+            <div class="row">
+              <% analysis.improvements.forEach((improvement, index) => { %>
+                <div class="col-md-6 mb-3">
+                  <div class="improvement-item">
+                    <div class="d-flex align-items-start">
+                      <span class="badge bg-warning text-dark me-3"><%= index + 1 %></span>
+                      <span class="text-light"><%= improvement %></span>
+                    </div>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          <% } else { %>
+            <p class="text-secondary">No specific improvements suggested.</p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="col-lg-12 text-center mt-4">
+      <a href="/application" class="btn btn-outline-primary me-3">
+        <i class="fas fa-arrow-left me-2"></i>Back to Applications
+      </a>
+      <button class="btn btn-primary" onclick="window.print()">
+        <i class="fas fa-download me-2"></i>Print Report
+      </button>
+    </div>
+  </div>
+</div>

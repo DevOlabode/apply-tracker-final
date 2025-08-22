@@ -1,0 +1,136 @@
+<% layout('layout/boilerplate.ejs') %>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Profile Header -->
+            <div class="text-center mb-5 fade-in">
+                <h1 class="display-4 text-gradient mb-3">Your Profile</h1>
+                <p class="lead text-light opacity-50">Manage your personal information and account settings</p>
+            </div>
+
+            <!-- Profile Card -->
+            <div class="card glass-card hover-lift mb-4">
+                <div class="card-body p-5">
+                    <!-- Avatar Section -->
+                    <div class="text-center mb-4">
+                        <div class="avatar-circle mx-auto mb-3">
+                            <span class="avatar-text">
+                                <%= user.firstName.charAt(0).toUpperCase() %><%= user.lastName.charAt(0).toUpperCase() %>
+                            </span>
+                        </div>
+                        <h3 class="mb-1"><%= user.firstName %> <%= user.lastName %></h3>
+                        <p class="text-muted mb-0"><%= user.email %></p>
+                    </div>
+
+                    <!-- Divider -->
+                    <hr class="my-4 border-light-opacity-10">
+
+                    <!-- Profile Details -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="detail-item">
+                                <small class="text-light opacity-50 d-block">First Name</small>
+                                <strong class="text-light"><%= user.firstName %></strong>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="detail-item">
+                                <small class="text-light opacity-50 d-block">Last Name</small>
+                                <strong class="text-light"><%= user.lastName %></strong>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="detail-item">
+                                <small class="text-light opacity-50 d-block">Email Address</small>
+                                <strong class="text-light"><%= user.email %></strong>
+                            </div>
+                        </div>
+                        <% if (user.bio) { %>
+                        <div class="col-12 mb-3">
+                            <div class="detail-item">
+                                <small class="text-light opacity-50 d-block">Bio</small>
+                                <strong class="text-light"><%= user.bio %></strong>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% if (user.location) { %>
+                        <div class="col-md-6 mb-3">
+                            <div class="detail-item">
+                                <small class="text-light opacity-50 d-block">Location</small>
+                                <strong class="text-light"><%= user.location %></strong>
+                            </div>
+                        </div>
+                        <% } %>
+                        <% if (user.website) { %>
+                        <div class="col-md-6 mb-3">
+                            <div class="detail-item">
+                                <small class="text-light opacity-50 d-block">Website</small>
+                                <strong class="text-light"><%= user.website %></strong>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+
+                    <!-- Account Stats -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h5 class="mb-3">Account Overview</h5>
+                            <div class="row">
+                                <div class="col-3 text-center">
+                                    <div class="stat-item">
+                                        <div class="stat-number"><%= counts.hired %></div>
+                                        <small class="text-light opacity-50">Hired</small>
+                                    </div>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <div class="stat-item">
+                                        <div class="stat-number"><%= counts.interviewing %></div>
+                                        <small class="text-light opacity-50">Interviews</small>
+                                    </div>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <div class="stat-item">
+                                        <div class="stat-number"><%= counts.offer %></div>
+                                        <small class="text-light opacity-50">Offers</small>
+                                    </div>
+                                </div>
+
+                                <div class="col-3 text-center">
+                                    <div class="stat-item">
+                                        <div class="stat-number"><%= counts.applied %></div>
+                                        <small class="text-light opacity-50">Applied</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="text-center mt-5">
+                        <a href="/user/<%= user._id %>/edit" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-edit me-2"></i>Edit Profile
+                        </a>
+                        <a href="/application" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-briefcase me-2"></i>View Applications
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Info Card -->
+            <div class="card glass-card hover-lift">
+                <div class="card-body p-4">
+                    <h5 class="mb-3">
+                        <i class="fas fa-shield-alt me-2 text-primary"></i>
+                        Account Security
+                    </h5>
+                    <p class="text-muted mb-3">Your account is secured with industry-standard encryption.</p>
+                    <a href="/user/<%= user._id %>/changePassword" class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-key me-1"></i>Change Password
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

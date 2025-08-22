@@ -1,0 +1,129 @@
+<% layout('layout/boilerplate.ejs') %>
+<div class="text-light py-5">
+  <!-- Hero Section -->
+  <div class="text-center mb-5">
+    <div class="hero-section">
+      <h1 class="display-3 fw-bold text-gradient mb-4">
+        <i class="fas fa-rocket me-3"></i>Apply Tracker
+      </h1>
+      <p class="lead fs-4 text-secondary mb-4">
+        Stay sharp. Stay organized. Land the job you deserve.
+      </p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="/application" class="btn btn-primary btn-lg px-4">
+          <i class="fas fa-list me-2"></i>View Applications
+        </a>
+        <a href="/application/new" class="btn btn-outline-light btn-lg px-4">
+          <i class="fas fa-plus-circle me-2"></i>Add New
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats Cards -->
+ <% if(currentUser){ %>
+   <div class="row g-4 mb-5">
+    <div class="col-md-3">
+      <div class="glass-card text-center p-4 hover-lift">
+        <i class="fas fa-briefcase text-primary fs-1 mb-3"></i>
+        <a href="/application?status=offer" class="text-decoration-none"><h3 class="text-gradient">Offer</h3></a>
+        <p class="fs-2 fw-bold text-light"><%= counts.offer %></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="glass-card text-center p-4 hover-lift">
+        <i class="fas fa-clock text-warning fs-1 mb-3"></i>
+        <a href="/application?status=applied" class="text-decoration-none"><h3 class="text-gradient">Applied</h3></a>
+        <p class="fs-2 fw-bold text-light"><%= counts.applied %></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="glass-card text-center p-4 hover-lift">
+        <i class="fas fa-comments text-info fs-1 mb-3"></i>
+        <a href="/application?status=interviewing" class="text-decoration-none"><h3 class="text-gradient">Interviewing</h3></a>
+        <p class="fs-2 fw-bold text-light"><%= counts.interviewing %></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="glass-card text-center p-4 hover-lift">
+        <i class="fas fa-check-circle text-success fs-1 mb-3"></i>
+        <a href="/application?status=hired" class="text-decoration-none"><h3 class="text-gradient">Success</h3></a>
+        <p class="fs-2 fw-bold text-light"><%= counts.hired %></p>
+      </div>
+    </div>
+  </div>
+
+  <% } %>
+  <!-- Quick Actions -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-6">
+      <div class="glass-card h-100">
+        <div class="card-body text-center p-5">
+          <i class="fas fa-list-ul text-primary fs-1 mb-3"></i>
+          <h4 class="text-gradient mb-3">Browse Applications</h4>
+          <p class="text-secondary mb-4">View and manage all your job applications in one place</p>
+          <a href="/application" class="btn btn-primary">
+            <i class="fas fa-arrow-right me-2"></i>View All
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="glass-card h-100">
+        <div class="card-body text-center p-5">
+          <i class="fas fa-plus-circle text-success fs-1 mb-3"></i>
+          <h4 class="text-gradient mb-3">Add New Application</h4>
+          <p class="text-secondary mb-4">Just applied somewhere new? Add it to track your progress</p>
+          <a href="/application/new" class="btn btn-success">
+            <i class="fas fa-plus me-2"></i>Add Application
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tips Section -->
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="glass-card p-4 h-100">
+        <div class="text-center mb-3">
+          <i class="fas fa-lightbulb text-warning fs-2"></i>
+        </div>
+        <h5 class="text-gradient text-center mb-3">Pro Tips</h5>
+        <ul class="list-unstyled text-secondary">
+          <li><i class="fas fa-check text-success me-2"></i>Follow up after 1 week</li>
+          <li><i class="fas fa-check text-success me-2"></i>Keep detailed notes</li>
+          <li><i class="fas fa-check text-success me-2"></i>Track interview dates</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="glass-card p-4 h-100">
+        <div class="text-center mb-3">
+          <i class="fas fa-fire text-danger fs-2"></i>
+        </div>
+        <h5 class="text-gradient text-center mb-3">Stay Motivated</h5>
+        <blockquote class="text-secondary text-center">
+          <p>"Success is where preparation and opportunity meet."</p>
+          <footer class="text-muted">— Bobby Unser</footer>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="glass-card p-4 h-100">
+        <div class="text-center mb-3">
+          <i class="fas fa-clipboard-list text-info fs-2"></i>
+        </div>
+        <h5 class="text-gradient text-center mb-3">Best Practices</h5>
+        <ul class="list-unstyled text-secondary">
+          <li><i class="fas fa-check text-success me-2"></i>Use notes for questions</li>
+          <li><i class="fas fa-check text-success me-2"></i>Upload your resume</li>
+          <li><i class="fas fa-check text-success me-2"></i>Track all stages</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

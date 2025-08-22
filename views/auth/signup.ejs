@@ -1,0 +1,159 @@
+<% layout('layout/boilerplate.ejs') %>
+
+<div class="signup-container">
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="bg-blob"></div>
+    <div class="bg-blob"></div>
+    <div class="bg-blob"></div>
+  </div>
+
+  <!-- Signup Form Container -->
+  <div class="signup-wrapper">
+    <div class="signup-form-container">
+      <!-- Header Section -->
+      <div class="signup-header">
+        <div class="logo-section">
+          <i class="fas fa-rocket logo-icon"></i>
+          <h1 class="signup-title">Join ApplyTracker</h1>
+          <p class="signup-subtitle">Start tracking your job applications like a pro</p>
+        </div>
+      </div>
+
+      <!-- Progress Indicator -->
+      <div class="progress-container">
+        <div class="progress-step active" data-step="1">
+          <span class="step-number">1</span>
+          <span class="step-label">Account</span>
+        </div>
+        <div class="progress-step" data-step="2">
+          <span class="step-number">2</span>
+          <span class="step-label">Security</span>
+        </div>
+        <div class="progress-step" data-step="3">
+          <span class="step-number">3</span>
+          <span class="step-label">Complete</span>
+        </div>
+      </div>
+
+      <!-- Main Form -->
+      <form action="/signup" method="POST" class="signup-form" id="signupForm">
+        <!-- Step 1: Account Details -->
+        <div class="form-step active" data-step="1">
+          <h3 class="step-title">Create Your Account</h3>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName" class="floating-label">First Name</label>
+              <input type="text" class="form-input" id="firstName" name="firstName" required>
+              <i class="input-icon fas fa-user"></i>
+            </div>
+            
+            <div class="form-group">
+              <label for="lastName" class="floating-label">Last Name</label>
+              <input type="text" class="form-input" id="lastName" name="lastName" required>
+              <i class="input-icon fas fa-user"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="username" class="floating-label">Username</label>
+            <input type="text" class="form-input" id="username" name="username" required>
+            <i class="input-icon fas fa-at"></i>
+            <span class="validation-hint">At least 3 characters</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="floating-label">Email Address</label>
+            <input type="email" class="form-input" id="email" name="email" required>
+            <i class="input-icon fas fa-envelope"></i>
+          </div>
+        </div>
+
+        <!-- Step 2: Security -->
+        <div class="form-step" data-step="2">
+          <h3 class="step-title">Secure Your Account</h3>
+          
+          <div class="form-group">
+            <label for="password" class="floating-label">Password</label>
+            <input type="password" class="form-input" id="password" name="password" required>
+            <i class="input-icon fas fa-lock"></i>
+            <div class="password-strength">
+              <div class="strength-bar">
+                <div class="strength-fill"></div>
+              </div>
+              <span class="strength-text">Password strength</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword" class="floating-label">Confirm Password</label>
+            <input type="password" class="form-input" id="confirmPassword" name="confirmPassword" required>
+            <i class="input-icon fas fa-lock"></i>
+          </div>
+
+          <div class="form-group">
+            <label for="bio" class="floating-label">Short Bio</label>
+            <textarea class="form-textarea" id="bio" name="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+            <i class="input-icon fas fa-user-edit"></i>
+          </div>
+        </div>
+
+        <!-- Step 3: Additional Info -->
+        <div class="form-step" data-step="3">
+          <h3 class="step-title">Complete Your Profile</h3>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="location" class="floating-label">Location</label>
+              <input type="text" class="form-input" id="location" name="location" placeholder="e.g., San Francisco, CA">
+              <i class="input-icon fas fa-map-marker-alt"></i>
+            </div>
+            
+            <div class="form-group">
+              <label for="website" class="floating-label">Website</label>
+              <input type="url" class="form-input" id="website" name="website" placeholder="https://your-website.com">
+              <i class="input-icon fas fa-globe"></i>
+            </div>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="checkbox-container">
+              <input type="checkbox" id="terms" name="terms" required>
+              <span class="checkmark"></span>
+              I agree to the <a href="/terms" class="link">Terms of Service</a> and <a href="/privacy" class="link">Privacy Policy</a>
+            </label>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label class="checkbox-container">
+              <input type="checkbox" id="newsletter" name="newsletter">
+              <span class="checkmark"></span>
+              Send me job search tips and updates
+            </label>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="form-navigation">
+          <button type="button" class="btn btn-secondary prev-btn" id="prevBtn" onclick="changeStep(-1)" style="display: none;">
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          
+          <button type="button" class="btn btn-primary next-btn" id="nextBtn" onclick="changeStep(1)">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+          
+          <button type="submit" class="btn btn-success submit-btn" id="submitBtn" style="display: none;">
+            <i class="fas fa-check"></i> Create Account
+          </button>
+        </div>
+      </form>
+
+      <!-- Login Link -->
+      <div class="login-link">
+        <p>Already have an account? <a href="/login">Sign in here</a></p>
+      </div>
+    </div>
+  </div>
+</div>

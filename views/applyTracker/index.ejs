@@ -1,0 +1,113 @@
+<% layout('layout/boilerplate') %>
+<div class="text-light">
+  <!-- Header Section -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h1 class="text-gradient fw-bold">
+        <i class="fas fa-briefcase me-3"></i>
+        <%= status %> Applications
+      </h1>
+      <p class="text-secondary">Manage your job search journey</p>
+    </div>
+    <div>
+      <a href="/application/new" class="btn btn-success new">
+        <i class="fas fa-plus"></i> Add New
+      </a>
+    </div>
+  </div>
+
+  <!-- Filter Pills -->
+  <div class="mb-4">
+    <div class="d-flex flex-wrap gap-2">
+      <a href="/application" class="badge bg-secondary text-decoration-none <%= status === 'All' ? 'bg-primary' : '' %>">
+        <i class="fas fa-list me-1"></i>All
+      </a>
+      <a href="/application?status=applied" class="badge status-applied text-decoration-none">
+        <i class="fas fa-paper-plane me-1"></i>Applied
+      </a>
+      <a href="/application?status=interviewing" class="badge status-interviewing text-decoration-none">
+        <i class="fas fa-comments me-1"></i>Interviewing
+      </a>
+      <a href="/application?status=offer" class="badge status-offer text-decoration-none">
+        <i class="fas fa-handshake me-1"></i>Offer
+      </a>
+      <a href="/application?status=hired" class="badge status-hired text-decoration-none">
+        <i class="fas fa-check-circle me-1"></i>Hired
+      </a>
+      <a href="/application?status=rejected" class="badge status-rejected text-decoration-none">
+        <i class="fas fa-times-circle me-1"></i>Rejected
+      </a>
+    </div>
+  </div>
+
+  <!-- Applications List -->
+  <% if (applications && applications.length > 0) { %>
+    <div class="row g-4">
+      <% for (let application of applications) { %>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card h-100 hover-lift">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                  <h5 class="text-gradient fw-bold mb-1">
+                    <i class="fas fa-building me-2"></i>
+                    <%= application.company %>
+                  </h5>
+                  <p class="text-light mb-2">
+                    <i class="fas fa-user-tie me-2"></i>
+                    <%= application.position %>
+                  </p>
+                </div>
+                <span class="badge status-<%= application.status %>">
+                  <i class="fas fa-circle me-1"></i>
+                  <%= application.status %>
+                </span>
+              </div>
+
+              <div class="mb-3">
+                <small class="text-secondary">
+                  <i class="fas fa-calendar me-1"></i>
+                  Applied: <%= new Date(application.appliedDate).toLocaleDateString() %>
+                </small>
+                <% if (application.interviewDate && application.interviewDate !== '') { %>
+                  <br>
+                  <small class="text-info">
+                    <i class="fas fa-clock me-1"></i>
+                    Interview: <%= new Date(application.interviewDate).toLocaleDateString() %>
+                  </small>
+                <% } %>
+              </div>
+
+              <div class="d-flex gap-2">
+                <a href="/application/<%= application._id %>" class="btn btn-primary btn-sm flex-fill">
+                  <i class="fas fa-eye me-1"></i>View Details
+                </a>
+                <a href="/application/<%= application._id %>/edit" class="btn btn-outline-light btn-sm">
+                  <i class="fas fa-edit"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  <% } else { %>
+    <div class="text-center py-5">
+      <i class="fas fa-search text-secondary fs-1 mb-3"></i>
+      <h3 class="text-secondary mb-3">No applications found</h3>
+      <p class="text-white mb-4 opacity-25">Start tracking your job applications today!</p>
+      <a href="/application/new" class="btn btn-success btn-lg">
+        <i class="fas fa-plus me-2"></i>Add Application
+      </a>
+    </div>
+  <% } %>
+
+  <!-- Back Button -->
+  <% if(status !== 'All' || q) { %>
+    <div class="text-center mt-5">
+      <a href="/application" class="btn btn-outline-light">
+        <i class="fas fa-arrow-left me-2"></i>View All Applications
+      </a>
+    </div>
+  <% } %>
+</div>

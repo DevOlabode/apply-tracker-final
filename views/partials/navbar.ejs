@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-dark shadow-lg border-bottom border-secondary">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-gradient fs-3" href="/">
+      <i class="fas fa-rocket me-2"></i>ApplyTracker
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-light hover-lift" href="/">
+            <i class="fas fa-home me-1"></i>Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light hover-lift" href="/application">
+            <i class="fas fa-list me-1"></i>All Applications
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light hover-lift" href="/application/new">
+            <i class="fas fa-plus-circle me-1"></i>New Application
+          </a>
+        </li>
+      </ul>
+
+      <% if(currentUser){ %>
+        <form class="d-flex me-3" action="/application" method="GET">
+          <div class="search-container position-relative">
+            <input 
+              class="form-control search-input" 
+              type="search" 
+              name="q" 
+              placeholder="Search companies..."
+              value="<%= typeof q !== 'undefined' ? q : '' %>"
+              aria-label="Search"
+            >
+            <button class="search-btn" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </form>
+      <% } %>
+
+      <ul class="navbar-nav">
+        <% if(!currentUser){ %>
+          <li class="nav-item">
+            <a href="/login" class="nav-link btn btn-outline-primary me-2">
+              <i class="fas fa-sign-in-alt me-1"></i>Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/signup" class="nav-link btn btn-primary">
+              <i class="fas fa-user-plus me-1"></i>Sign Up
+            </a>
+          </li>
+        <% }else{ %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown">
+              <span class="fw-bold"><%= currentUser.username %></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="/user/<%= currentUser._id %>">
+                <i class="fas fa-user-circle me-2"></i>Profile
+              </a></li>
+              <li><a class="dropdown-item" href="/logout">
+                <i class="fas fa-sign-out-alt me-2"></i>Logout
+              </a></li>
+            </ul>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>

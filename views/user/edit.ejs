@@ -1,0 +1,122 @@
+<%- layout('layout/boilerplate.ejs') %>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Page Header -->
+            <div class="text-center mb-5 fade-in">
+                <h1 class="display-4 text-gradient mb-3">Edit Profile</h1>
+                <p class="lead text-light opacity-50">Update your personal information and account details</p>
+            </div>
+
+            <!-- Edit Form Card -->
+            <div class="card glass-card hover-lift fade-in">
+                <div class="card-body p-5">
+                    <form action="/user/<%= user._id %>?_method=put" method="post">
+                        <div class="row">
+                            <!-- First Name -->
+                            <div class="col-md-6 mb-4">
+                                <label for="firstName" class="form-label text-light opacity-50">First Name</label>
+                                <input 
+                                    type="text" 
+                                    name="firstName" 
+                                    id="firstName" 
+                                    class="form-control" 
+                                    value="<%= user.firstName %>"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="col-md-6 mb-4">
+                                <label for="lastName" class="form-label text-light opacity-50">Last Name</label>
+                                <input 
+                                    type="text" 
+                                    name="lastName" 
+                                    id="lastName" 
+                                    class="form-control" 
+                                    value="<%= user.lastName %>"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Email -->
+                            <div class="col-12 mb-4">
+                                <label for="email" class="form-label text-light opacity-50">Email Address</label>
+                                <input 
+                                    type="email" 
+                                    name="email" 
+                                    id="email" 
+                                    class="form-control" 
+                                    value="<%= user.email %>"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Username -->
+                            <div class="col-12 mb-4">
+                                <label for="username" class="form-label text-light opacity-50">Username</label>
+                                <input 
+                                    type="text" 
+                                    name="username" 
+                                    id="username" 
+                                    class="form-control" 
+                                    value="<%= user.username %>"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Bio -->
+                            <div class="col-12 mb-4">
+                                <label for="bio" class="form-label text-light opacity-50">Bio</label>
+                                <textarea 
+                                    name="bio" 
+                                    id="bio" 
+                                    class="form-control" 
+                                    rows="3"
+                                    placeholder="Tell us about yourself..."
+                                ><%= user.bio %></textarea>
+                            </div>
+
+                            <!-- Location -->
+                            <div class="col-md-6 mb-4">
+                                <label for="location" class="form-label text-light opacity-50">Location</label>
+                                <input 
+                                    type="text" 
+                                    name="location" 
+                                    id="location" 
+                                    class="form-control" 
+                                    value="<%= user.location %>"
+                                    placeholder="City, Country"
+                                >
+                            </div>
+
+                            <!-- Website -->
+                            <div class="col-md-6 mb-4">
+                                <label for="website" class="form-label text-light opacity-50">Website</label>
+                                <input 
+                                    type="url" 
+                                    name="website" 
+                                    id="website" 
+                                    class="form-control" 
+                                    value="<%= user.website %>"
+                                    placeholder="https://yourwebsite.com"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-save me-2"></i>Save Changes
+                            </button>
+                            <a href="/user/<%= user._id %>" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-times me-2"></i>Cancel
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
