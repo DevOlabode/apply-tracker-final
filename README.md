@@ -27,6 +27,10 @@ ApplyTracker is a comprehensive web application designed to help job seekers tra
 ![application index](images/1.png)
 ![New Application](images/2.png)
 ![Alt text](images/3.png)
+![profile top](images/4.png)
+![profile bottom](images/5.png)
+![Show page](images/6.png)
+![Show page](images/7.png)
 
 ## 🛠️ Tech Stack
 
