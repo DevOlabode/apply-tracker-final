@@ -23,7 +23,7 @@ const applyRoute = require('./routes/applyTracker');
 const authRoute = require('./routes/auth');
 const userRoute = require('./routes/user')
 
-mongoose.connect('mongodb://127.0.0.1:27017/application')
+mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         console.log("Mongo Connection Open")   
     }).catch((err) => {
@@ -69,7 +69,7 @@ app.use((req, res, next)=>{
     res.locals.info = req.flash('info');
     res.locals.warning = req.flash('warning')
     next();
-})
+});
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -96,7 +96,6 @@ app.use('/user', userRoute);
 app.all(/(.*)/, (req, res, next) => {
     next(new ExpressError('Page not found', 404))
 });
-
 
 app.use((err, req, res, next)=>{
     const {statusCode = 500} = err;

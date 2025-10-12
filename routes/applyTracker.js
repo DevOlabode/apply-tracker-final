@@ -16,8 +16,6 @@ router.route('/')
   validateApplication,
   catchAsync(applyTracker.newApplication))
 
-
-
 router.get('/new', isLoggedIn, applyTracker.newForm);
 
 router.get('/:id/analysis', isLoggedIn, catchAsync(applyTracker.analyseResume));
