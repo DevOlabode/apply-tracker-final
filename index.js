@@ -1,6 +1,4 @@
 require('dotenv').config();
-
-const port = process.env.PORT;
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -105,6 +103,8 @@ app.use((err, req, res, next)=>{
     res.status(statusCode).render('error', {err})
 });
 
-app.listen(port, ()=>{
-    console.log(`APP IS LISTENING ON PORT ${port}`)
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, ()=>{
+    console.log(`APP IS LISTENING ON PORT ${PORT}`)
 });
