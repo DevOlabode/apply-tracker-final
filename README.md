@@ -46,7 +46,7 @@ ApplyTracker is a comprehensive web application designed to help job seekers tra
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone 
    cd applyTracker
    ```
 
